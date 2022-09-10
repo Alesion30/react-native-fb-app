@@ -1,19 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { userApi } from './src/api/user';
+import { User } from './src/domains/user';
 
 export default function App() {
+  const [users, setUsers] = useState<User[]>([]);
+
   useEffect(() => {
     // DBからユーザー一覧を取得
     userApi.getUsers().then((users) => {
-      console.log(users);
+      setUsers(users);
     });
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <View>
+        <Text>ユーザー一覧</Text>
+        {users.map((user, i) => {
+          return <Text>{i}: {user.name}</Text>;
+        })}
+      </View>
       <StatusBar style="auto" />
     </View>
   );
