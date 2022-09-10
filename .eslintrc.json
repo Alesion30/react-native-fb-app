@@ -3,7 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["plugin:react/recommended", "airbnb"],
+  "extends": ["plugin:react/recommended", "airbnb", "airbnb-typescript"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -22,6 +22,7 @@
     "react/react-in-jsx-scope": "off",
     "react/style-prop-object": "off",
     "no-use-before-define": "off",
-    "func-names": "off"
+    "func-names": "off",
+    "import/prefer-default-export": "off"
   }
 }
